@@ -3,9 +3,14 @@
     <head>
         <title>Compuond Interest</title>
         <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+        <link rel="stylesheet" href="materialize.css"/>
+        <link rel="stylesheet" href="style.css"/> 
     </head>
     <body>
-        <h1>Welcome to our Compound Interest Calculator!</h1>
+        <header>
+            <h2>FutureFundsCalculator</h2>
+        </header>
+        <h4>Welcome to our Compound Interest Calculator!</h4>
         <p>Whether you're planning for your future or managing investments, 
             understanding how compound interest works is essential. 
             Compound interest allows your money to grow exponentially over 
@@ -18,27 +23,34 @@
             Simply enter your details, and let our tool do the rest to show 
             you the potential of compound interest in action.</p>
         <p>Start planning for your financial future today—calculate your compound interest now!</p>
-        <form onsubmit="return getCompoundInterest()">
-            <label for="initial">Enter amount of initial investment:</label>
-            <input type="number" id="initial" step="any"/>
-            <label for="rate">Annual interest rate:</label>
-            <input type="number" id="rate" step="any"/>
-            <label for="retire">Year of retirement:</label>
-            <input type="number" id="retire" min="2025" max="2125"/>
-            <input type="submit"/>
-        </form>
-        <p id="result"></p>
-        
+        <div class="container">            
+            <div class="card-panel green accent-1">
+                <form onsubmit="return getCompoundInterest()">
+                    <label for="initial">Enter amount of initial investment:</label>
+                    <input type="number" id="initial" step="any" required/>
+                    <br/>
+                    <label for="rate">Annual interest rate:</label>
+                    <input type="number" id="rate" step="any" required/>
+                    <br/>
+                    <label for="retire">Year of retirement:</label>
+                    <input type="number" id="retire" min="2025" max="2125" required/>
+                    <input type="submit" class="teal lighten-2"/>
+                </form>
+
+                <p id="result"></p>
+            </div>
+        </div>
+
         <script>
             function getCompoundInterest() { 
-                const initialAmount = document.getElementById('...').value;
-                const interestRate = document.getElementById('...').value;
-                const endYear = document.getElementById('...').value;
+                const initialAmount = document.getElementById('initial').value;
+                const interestRate = document.getElementById('rate').value;
+                const endYear = document.getElementById('retire').value;
                 const now = new Date();
                 const years = endYear - now.getFullYear();  
                 // add logic for calculating compound interest 
-                let text = initialAmount * Math.pow(1 + interestRate/100 , years)
-                document.getElementById('result').innerHTML = `Your total interest amount when you retire will be $${text.toFixed(0)}.`
+                let amount = initialAmount * Math.pow(1 + interestRate/100 , years)
+                document.getElementById('result').innerHTML = `Your total interest amount when you retire will be $${amount.toFixed(0)}.`
                 // Stops the form from submitting and refreshing 
                 return false; 
             }

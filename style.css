@@ -1,0 +1,22 @@
+body {
+    margin: 1em;
+    padding: 1em;
+    border: solid 1pt #0050A0;
+}
+
+header {
+    background-color: #70E8F0;
+    position: sticky; 
+    top: 0;
+    height: 4em;
+    text-align: center;
+    margin: 0em;
+}
+
+p {
+    text-align: justify;
+}
+
+h2 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
